@@ -1,3 +1,12 @@
-function DarthVader(){
-    dfsadf
+<?php
+
+/*
+Create einstein's field equations
+*/
+
+
+function einsteinFieldEquation(){
+    
+    
 }
+
