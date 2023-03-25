@@ -55,8 +55,53 @@ class Hand{
             echo $card->getSuit() . " " . $card->getValue() . PHP_EOL;
         }
     }
+    public function dealCardsToPlayers($players){
+        foreach($players as $player){
+            for($i = 0; $i < 5; $i++){
+                $player->cards[] = array_pop($this->cards);
+            }
+        }
+    }
 }
 
+class Player{
+    public $cards;
+    public $hand;
+    function __construct(){
+        $this->cards = [];
+    }
+    public function showCards(){
+        echo "Your hand is:" . PHP_EOL;
+        foreach($this->cards as $card){
+            echo $card->getSuit() . " " . $card->getValue() . PHP_EOL;
+        }
+    }
+
+}
+
+class Dealer{
+    public $cards;
+    public $hand;
+    function __construct(){
+        $this->cards = [];
+    }
+    public function showCards(){
+        echo "Your hand is:" . PHP_EOL;
+        foreach($this->cards as $card){
+            echo $card->getSuit() . " " . $card->getValue() . PHP_EOL;
+        }
+    }
+    public function deal(){
+        $this->hand = new Hand($this);
+    }
+    public function dealCardsToPlayers($players){
+        foreach($players as $player){
+            for($i = 0; $i < 5; $i++){
+                $player->cards[] = array_pop($this->cards);
+            }
+        }
+    }
+}
 
 
 $deck = new Deck();
@@ -67,3 +112,5 @@ $deck->showCards();
 $hand = new Hand($deck);
 $hand->showCards();
 
+
+     
